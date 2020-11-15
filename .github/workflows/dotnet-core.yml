@@ -28,17 +28,11 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release --no-restore
     
-    - name: Creat neccessary directories
+    - name: Test
       run: |
-        mkdir "_TMP" 
-            
-    - name: use this action, test solution dir
-      uses: zyborg/dotnet-tests-report@v1.0.0
+       for directory in */ ; do mkdir "$directory/TestResults"; done
+       dotnet test --no-restore --verbosity normal --logger "html;LogFileName=logFile.html"
+   
+    - uses: actions/upload-artifact@v2
       with:
-        report_name: my_project_tests
-        report_title: My Project Tests
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-    # - name: Test
-    #  run: |
-    #    for directory in */ ; do mkdir "$directory/TestResults"; done
-    #    dotnet test --no-restore --verbosity normal --logger "html;LogFileName=logFile.html"
+        path: ${{github.workspace	}}/**/logFile.html
