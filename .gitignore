@@ -28,3 +28,5 @@ aspnetdb_log.ldf
 .ionide
 .exercism
 .vs
+TestResults
+logFile.html
