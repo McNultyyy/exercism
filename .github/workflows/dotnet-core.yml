@@ -27,6 +27,10 @@ jobs:
       
     - name: Build
       run: dotnet build --configuration Release --no-restore
+    
+    - name: Create testresults folder
+      run: |
+        for directory in */ ; do mkdir "$directory/TestResults"; done
       
     - name: Test
       run: dotnet test --no-restore --verbosity normal --logger "html;LogFileName=logFile.html"
