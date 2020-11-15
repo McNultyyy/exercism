@@ -30,9 +30,10 @@ jobs:
     
     - name: Test
       run: |
-       for directory in */ ; \
-        do mkdir "$directory/TestResults" && \
-        dotnet test --no-restore --verbosity normal --logger "html;LogFileName=$(basename $PWD)-logFile.html" ; \
+       for directory in */ \
+       do \
+        mkdir "$directory/TestResults" && \
+        dotnet test --no-restore --verbosity normal --logger "html;LogFileName=$(basename $PWD)-logFile.html" \
        done
        
     - uses: kittaakos/upload-artifact-as-is@v0
