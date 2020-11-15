@@ -28,6 +28,10 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release --no-restore
     
+    - name: Creat neccessary directories
+      run: |
+        mkdir "_TMP" 
+            
     - name: use this action, test solution dir
       uses: zyborg/dotnet-tests-report@v1.0.0
       with:
