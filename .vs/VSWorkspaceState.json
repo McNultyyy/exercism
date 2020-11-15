@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\.config",
+    "\\accumulate",
+    "\\clock",
+    "\\hello-world",
+    "\\raindrops",
+    "\\space-age",
+    "\\sum-of-multiples"
+  ],
+  "SelectedNode": "\\raindrops\\RaindropsTest.fs",
+  "PreviewInSolutionExplorer": false
+}
