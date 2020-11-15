@@ -28,14 +28,13 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release --no-restore
     
-    - name: Create testresults folder
-      run: |
-        for directory in */ ; do mkdir "$directory/TestResults"; done
-      
-    - name: Test
-      run: dotnet test --no-restore --verbosity normal --logger "html;LogFileName=logFile.html"
-      
-    - name: Upload WebApp1 Build Artifact
-      uses: actions/upload-artifact@v2
+    - name: use this action, test solution dir
+      uses: zyborg/dotnet-tests-report@v1.0.0
       with:
-        path: /**/logFile.html
+        report_name: my_project_tests
+        report_title: My Project Tests
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+    # - name: Test
+    #  run: |
+    #    for directory in */ ; do mkdir "$directory/TestResults"; done
+    #    dotnet test --no-restore --verbosity normal --logger "html;LogFileName=logFile.html"
