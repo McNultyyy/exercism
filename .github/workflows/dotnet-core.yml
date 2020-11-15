@@ -34,5 +34,6 @@ jobs:
        dotnet test --no-restore --verbosity normal --logger "html;LogFileName=logFile.html"
    
     - uses: actions/upload-artifact@v2
+      if: ${{ always() }}
       with:
         path: ${{github.workspace	}}/**/logFile.html
