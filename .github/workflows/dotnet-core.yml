@@ -30,10 +30,12 @@ jobs:
     
     - name: Test
       run: |
-       for directory in */ ; do mkdir "$directory/TestResults"; done
-       dotnet test --no-restore --verbosity normal --logger "html;LogFileName=logFile.html"
-   
-    - uses: actions/upload-artifact@v2
+       for directory in */ ; \
+        do mkdir "$directory/TestResults" && \
+        dotnet test --no-restore --verbosity normal --logger "html;LogFileName=$(basename $PWD)-logFile.html" ; \
+       done
+       
+    - uses: kittaakos/upload-artifact-as-is@v1
       if: ${{ always() }}
       with:
-        path: ${{github.workspace	}}/**/logFile.html
+        path: ${{github.workspace}}/**/*-logFile.html
