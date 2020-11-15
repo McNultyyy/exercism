@@ -35,7 +35,7 @@ jobs:
         dotnet test --no-restore --verbosity normal --logger "html;LogFileName=$(basename $PWD)-logFile.html" ; \
        done
        
-    - uses: kittaakos/upload-artifact-as-is@v1
+    - uses: kittaakos/upload-artifact-as-is@v0
       if: ${{ always() }}
       with:
         path: ${{github.workspace}}/**/*-logFile.html
