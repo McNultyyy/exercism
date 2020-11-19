@@ -7,9 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="README.md" />
     <Compile Include="RobotSimulator.fs" />
     <Compile Include="RobotSimulatorTests.fs" />
   </ItemGroup>
+
+  <ItemGroup />
 
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.8.0" />

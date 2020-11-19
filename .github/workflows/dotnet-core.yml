@@ -29,12 +29,7 @@ jobs:
       run: dotnet build --configuration Release --no-restore
     
     - name: Test
-      run: dotnet test (ls -r **/bin/**/*.dll | where Name -match ((gci -directory) -join "|")) --logger "html;LogFileName=logFile.html"
-        
+      run: dotnet test
+      #run: dotnet test (ls -r **/bin/**/*.dll | where Name -match ((gci -directory) -join "|")) --logger "html;LogFileName=logFile.html" 
       # finds all the test dlls based on the name of the fsproj file, and then runs dotnet test against the list.
       # this is done so a single test results file is produced.
-
-    - uses: kittaakos/upload-artifact-as-is@v0
-      if: ${{ always() }}
-      with:
-        path: ${{github.workspace}}/**/logFile.html
